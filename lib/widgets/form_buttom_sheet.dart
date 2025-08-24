@@ -3,18 +3,6 @@ import 'package:notess_app/constants.dart';
 import 'package:notess_app/widgets/custom_button.dart';
 import 'package:notess_app/widgets/custom_text_field.dart';
 
-class AddNoteButtonSheet extends StatelessWidget {
-  const AddNoteButtonSheet({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return const Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(child: AddNoteForm()),
-    );
-  }
-}
-
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
 
