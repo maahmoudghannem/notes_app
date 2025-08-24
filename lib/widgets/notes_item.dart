@@ -21,7 +21,7 @@ class NotesItem extends StatelessWidget {
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Color(0xffFFCC80),
+          color: Colors.blueGrey,
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -41,8 +41,8 @@ class NotesItem extends StatelessWidget {
                   "Build Your Career With \nTharwat Samy",
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.grey.withOpacity(0.7),
-                    fontWeight: FontWeight.w400,
+                    color: Colors.grey.withOpacity(0.8),
+                    fontWeight: FontWeight.w500,
                   ),
                 ),
               ),
