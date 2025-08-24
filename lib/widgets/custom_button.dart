@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomButton extends StatelessWidget {
-  CustomButton({
+  const CustomButton({
     super.key,
     this.onTap,
     required this.text,
@@ -12,7 +12,7 @@ class CustomButton extends StatelessWidget {
     this.textColor = Colors.black,
   });
 
-  VoidCallback? onTap;
+  final VoidCallback? onTap;
   final dynamic fontWeight;
   final String text;
   final double fontSize;

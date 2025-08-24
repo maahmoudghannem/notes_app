@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 // ignore: must_be_immutable
 class CustomTextField extends StatelessWidget {
-  CustomTextField({
+  const CustomTextField({
     super.key,
     required this.labelText,
     this.onChanged,
@@ -14,7 +14,7 @@ class CustomTextField extends StatelessWidget {
     this.enabledBorderColor = Colors.white,
     this.cursorColor = Colors.white,
   });
-  Function(String)? onChanged;
+  final Function(String)? onChanged;
   final String labelText;
   final double fontSize;
   final bool obSecure;
