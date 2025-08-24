@@ -8,36 +8,68 @@ class AddNoteButtonSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16),
-      child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(height: 32),
-            CustomTextField(
-              cursorColor: kPrimaryColor,
-              labelText: "Title",
-              textColor: kPrimaryColor,
-              focusedBorderColor: kPrimaryColor,
-            ),
-            SizedBox(height: 16),
-            CustomTextField(
-              cursorColor: kPrimaryColor,
-              labelText: "Content",
-              textColor: kPrimaryColor,
-              focusedBorderColor: kPrimaryColor,
-              maxLines: 5,
-            ),
-            SizedBox(height: 32),
-            CustomButton(
-              text: "Add",
-              fontSize: 20,
-              containerColor: kPrimaryColor,
-              fontWeight: FontWeight.w500,
-            ),
-            SizedBox(height: 20),
-          ],
-        ),
+    return const Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16),
+      child: SingleChildScrollView(child: AddNoteForm()),
+    );
+  }
+}
+
+class AddNoteForm extends StatefulWidget {
+  const AddNoteForm({super.key});
+
+  @override
+  State<AddNoteForm> createState() => _AddNoteFormState();
+}
+
+class _AddNoteFormState extends State<AddNoteForm> {
+  final GlobalKey<FormState> formKey = GlobalKey();
+  AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
+  String? title, content;
+
+  @override
+  Widget build(BuildContext context) {
+    return Form(
+      key: formKey,
+      child: Column(
+        children: [
+          const SizedBox(height: 32),
+          CustomTextField(
+            onSaved: (value) {
+              title = value;
+            },
+            cursorColor: kPrimaryColor,
+            labelText: "Title",
+            textColor: kPrimaryColor,
+            focusedBorderColor: kPrimaryColor,
+          ),
+          const SizedBox(height: 16),
+          CustomTextField(
+            onSaved: (value) {
+              content = value;
+            },
+            cursorColor: kPrimaryColor,
+            labelText: "Content",
+            textColor: kPrimaryColor,
+            focusedBorderColor: kPrimaryColor,
+            maxLines: 5,
+          ),
+          const SizedBox(height: 32),
+          CustomButton(
+            onTap: () {
+              if (formKey.currentState!.validate()) {
+                formKey.currentState!.save();
+              } else {
+                autovalidateMode = AutovalidateMode.always;
+              }
+            },
+            text: "Add",
+            fontSize: 20,
+            containerColor: kPrimaryColor,
+            fontWeight: FontWeight.w500,
+          ),
+          const SizedBox(height: 20),
+        ],
       ),
     );
   }
