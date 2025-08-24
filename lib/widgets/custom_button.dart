@@ -10,9 +10,11 @@ class CustomButton extends StatelessWidget {
     this.fontWeight = FontWeight.w600,
     this.containerColor = Colors.white,
     this.textColor = Colors.black,
+    this.isLoading = false,
   });
 
   final VoidCallback? onTap;
+  final bool isLoading;
   final dynamic fontWeight;
   final String text;
   final double fontSize;
@@ -30,14 +32,20 @@ class CustomButton extends StatelessWidget {
           color: containerColor,
         ),
         child: Center(
-          child: Text(
-            text,
-            style: TextStyle(
-              fontSize: fontSize,
-              color: textColor,
-              fontWeight: fontWeight,
-            ),
-          ),
+          child: isLoading
+              ? SizedBox(
+                  height: 24,
+                  width: 24,
+                  child: CircularProgressIndicator(color: Colors.black),
+                )
+              : Text(
+                  text,
+                  style: TextStyle(
+                    fontSize: fontSize,
+                    color: textColor,
+                    fontWeight: fontWeight,
+                  ),
+                ),
         ),
       ),
     );
