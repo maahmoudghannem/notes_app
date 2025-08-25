@@ -1,9 +1,13 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+
+import 'package:notess_app/models/note_model.dart';
 import 'package:notess_app/views/notes_edit_view.dart';
 
 class NotesItem extends StatelessWidget {
-  const NotesItem({super.key});
+  const NotesItem({Key? key, required this.note}) : super(key: key);
 
+  final NoteModel note;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -21,14 +25,14 @@ class NotesItem extends StatelessWidget {
         padding: const EdgeInsets.only(top: 24, bottom: 24, left: 16),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(16),
-          color: Colors.blueGrey,
+          color: Color(note.color),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                "Flutter Tips",
+              title: Text(
+                note.title,
                 style: TextStyle(
                   fontSize: 25,
                   color: Colors.black,
@@ -36,9 +40,9 @@ class NotesItem extends StatelessWidget {
                 ),
               ),
               subtitle: Padding(
-                padding: const EdgeInsets.only(bottom: 16, top: 16),
+                padding: EdgeInsets.only(bottom: 16, top: 16),
                 child: Text(
-                  "Build Your Career With \nTharwat Samy",
+                  note.subTitle,
                   style: TextStyle(
                     fontSize: 16,
                     color: Colors.grey.withOpacity(0.8),
@@ -52,12 +56,12 @@ class NotesItem extends StatelessWidget {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.only(right: 24.0),
+              padding: EdgeInsets.only(right: 24.0),
               child: Text(
-                "May 21,2022",
+                note.date,
                 style: TextStyle(
                   fontSize: 15,
-                  color: Colors.grey.withOpacity(0.5),
+                  color: Colors.black.withOpacity(0.5),
                   fontWeight: FontWeight.w400,
                 ),
               ),
