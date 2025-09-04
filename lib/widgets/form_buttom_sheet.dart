@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:notess_app/constants.dart';
 import 'package:notess_app/cubits/add_note_cubit/add_note_cubit.dart';
 import 'package:notess_app/models/note_model.dart';
+import 'package:notess_app/widgets/colors_list.dart';
 import 'package:notess_app/widgets/custom_button.dart';
 import 'package:notess_app/widgets/custom_text_field.dart';
 import 'package:intl/intl.dart';
@@ -46,7 +47,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
             focusedBorderColor: kPrimaryColor,
             maxLines: 5,
           ),
-          const SizedBox(height: 32),
+          const SizedBox(height: 20),
+          ColorsList(),
+          const SizedBox(height: 20),
           BlocBuilder<AddNoteCubit, AddNoteState>(
             builder: (context, state) {
               return CustomButton(
@@ -60,12 +63,10 @@ class _AddNoteFormState extends State<AddNoteForm> {
                       title: title!,
                       date: formatDate,
                       subTitle: subTitle!,
-                      color: Colors.blue.value,
                     );
                     BlocProvider.of<AddNoteCubit>(context).addNote(noteModel);
                   } else {
-                    autovalidateMode = AutovalidateMode.always;
-                    setState(() {});
+                    setState(() => autovalidateMode = AutovalidateMode.always);
                   }
                 },
                 text: "Add",
@@ -75,7 +76,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               );
             },
           ),
-          const SizedBox(height: 20),
+          const SizedBox(height: 40),
         ],
       ),
     );
