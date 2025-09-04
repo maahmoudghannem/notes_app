@@ -16,14 +16,14 @@ class AddNoteForm extends StatefulWidget {
 }
 
 class _AddNoteFormState extends State<AddNoteForm> {
-  final GlobalKey<FormState> formKey = GlobalKey();
+  final GlobalKey<FormState> _formKey = GlobalKey();
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subTitle;
 
   @override
   Widget build(BuildContext context) {
     return Form(
-      key: formKey,
+      key: _formKey,
       child: Column(
         children: [
           const SizedBox(height: 32),
@@ -55,8 +55,8 @@ class _AddNoteFormState extends State<AddNoteForm> {
               return CustomButton(
                 isLoading: state is AddNoteLoading ? true : false,
                 onTap: () {
-                  if (formKey.currentState!.validate()) {
-                    formKey.currentState!.save();
+                  if (_formKey.currentState!.validate()) {
+                    _formKey.currentState!.save();
                     var currentDate = DateTime.now();
                     var formatDate = DateFormat.yMd().format(currentDate);
                     NoteModel noteModel = NoteModel(
